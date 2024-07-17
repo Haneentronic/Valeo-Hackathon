@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import messagebox, PhotoImage
+from tkinter import  Scrollbar, PhotoImage , Listbox
 import imaplib
 import email
 
@@ -25,22 +25,50 @@ def login():
         messagebox.showerror("Login Failed", "Invalid email, password, or role")
 
 def open_new_page(welcome_message):
-    # Hide the main login window
     root.withdraw()
     
-    # Create a new window for the welcome page
     welcome_window = tk.Toplevel()
-    welcome_window.title("Welcome Page")
-    welcome_window.geometry("600x400")
-    
-    # Label for welcome message
-    label_welcome = tk.Label(welcome_window, text=welcome_message, font=("Helvetica", 20, "bold"))
-    label_welcome.pack(pady=20)
-    
-    # Button to logout and go back to main login
-    logout_button = tk.Button(welcome_window, text="Logout", command=lambda: logout(welcome_window), font=("Helvetica", 16))
-    logout_button.pack(pady=20)
+    welcome_window.title("Welcome, Developer!")
+    welcome_window.geometry("800x600")
 
+    label_welcome = tk.Label(welcome_window, text="Welcome, Developer!", font=("Helvetica", 20, "bold"))
+    label_welcome.pack(pady=10)
+    
+    navigation_frame = tk.Frame(welcome_window, bg="#f0f0f0", width=200)
+    navigation_frame.pack(side=tk.LEFT, fill=tk.Y)
+    
+    label_navigation = tk.Label(navigation_frame, text="Main menu", font=("Helvetica", 18), pady=10)
+    label_navigation.pack()
+    
+    navigation_list = Listbox(navigation_frame, selectbackground="#c0c0c0", font=("Helvetica", 14), bg="#f0f0f0", relief=tk.FLAT)
+    navigation_list.pack(fill=tk.Y, padx=10, pady=10)
+    
+    # Example emails
+    options = ["Inbox", "Sent", "Drafts", "Trash", "Spam"]
+    for option in options:
+        navigation_list.insert(tk.END, option)
+    
+    content_frame = tk.Frame(welcome_window, bg="white", padx=20, pady=20)
+    content_frame.pack(expand=True, fill=tk.BOTH)
+    
+    label_content = tk.Label(content_frame, text="Your emails", font=("Helvetica", 18), pady=10)
+    label_content.pack()
+    
+    emails_listbox = Listbox(content_frame, selectbackground="#c0c0c0", font=("Helvetica", 14), height=15, bg="white", relief=tk.FLAT)
+    emails_listbox.pack(expand=True, fill=tk.BOTH, padx=10, pady=10)
+    
+    for i in range(20):
+        emails_listbox.insert(tk.END, f"Email {i+1}")
+    
+    scrollbar = Scrollbar(emails_listbox)
+    scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+    emails_listbox.config(yscrollcommand=scrollbar.set)
+    scrollbar.config(command=emails_listbox.yview)
+    
+    logout_button = tk.Button(welcome_window, text="Logout", command=lambda: logout(welcome_window), font=("Helvetica", 14))
+    logout_button.pack(side=tk.BOTTOM, pady=20)
+    
+    welcome_window.resizable(False, False)
 def logout(window):
     # Destroy the welcome window and show the main login window
     window.destroy()
