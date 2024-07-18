@@ -1,0 +1,70 @@
+body {
+    font-family: 'Helvetica', sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column; /* Align items in a column */
+    align-items: center; /* Center align items horizontally */
+    justify-content: center; /* Center align items vertically */
+    height: 100vh;
+    margin: 0;
+}
+
+#logo-container {
+    text-align: center; /* Center align content */
+    margin-bottom: 20px; /* Add space between logo and content */
+}
+
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* Align children in a column */
+    align-items: flex-start; /* Align children to the left */
+    text-align: left;
+}
+
+form {
+    width: 100%; /* Ensure form takes full width of container */
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    margin-top: auto; /* Push button to the bottom of the container */
+    margin-bottom: 20px; /* Add space below the button */
+    text-align: center;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+input[type=text], input[type=email], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    box-sizing: border-box;
+}
+
+label {
+    align-self: flex-start; /* Align labels to the left */
+    margin-bottom: 5px; /* Add space below each label */
+}
+
+a {
+    color: blue;
+    cursor: pointer;
+    font-size: 10px;
+}

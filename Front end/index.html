@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to innovatehers App</title>
+    <link rel="stylesheet" href="stylesSignIn.css">
+</head>
+
+<body>
+    <div id="logo-container">
+        <img src="Logo.png" alt="Logo">
+    </div>
+
+    <div id="login-frame" class="container">
+        <h1>Welcome to innovatehers App</h1>
+
+        <label for="role">Log in as</label>
+        <select id="role">
+            <option value="Developer" selected>Developer</option>
+            <option value="Support Leader">Support Leader</option>
+        </select>
+
+        <label for="email">Email</label>
+        <input type="email" id="email">
+
+        <label for="password">Password</label>
+        <input type="password" id="password">
+
+        <button onclick="login()">Login</button>
+
+        <a href="#" onclick="forgetPassword()">Forgot your password?</a>
+        <br>
+        <a href="signup.html" onclick="showSignup()">New user? Sign up</a>
+    </div>
+
+    <div id="signup-frame" class="container hidden">
+        <!-- Signup form content -->
+    </div>
+
+    <script src="/eel.js"></script>
+    <script>
+        function login() {
+            const role = document.getElementById('role').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            eel.login(role, email, password);
+        }
+    </script>
+</body>
+
+</html>
