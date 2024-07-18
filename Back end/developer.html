@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Dashboard</title>
+    <link rel="stylesheet" href="styledeveloper.css">
+</head>
+
+<body>
+    <div id="logo-container">
+        <img src="Logo.png" alt="Logo">
+    </div>
+
+    <div id="dashboard-frame" class="container">
+        <h1>Welcome, Developer!</h1>
+        <div class="main-container">
+            <div class="sidebar">
+                <div class="nav-item">Inbox</div>
+                <div class="nav-item">Sent</div>
+                <div class="nav-item">Drafts</div>
+                <div class="nav-item">Spam</div>
+                <div class="nav-item">Trash</div>
+            </div>
+            <div class="content">
+                <div id="email-list" class="email-list">
+                    <!-- Emails will be dynamically loaded here -->
+                </div>
+                <div id="email-content" class="email-content hidden">
+                    <button id="back-button" class="back-button">&larr; Back</button>
+                    <div id="email-detail" class="email-detail">
+                        <!-- Email details will be dynamically loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="eel.js"></script>
+    <script>
+        async function fetchEmails() {
+            const emails = await eel.fetch_gmail_messages()();
+            const emailListContainer = document.getElementById('email-list');
+            const emailContentContainer = document.getElementById('email-content');
+            const emailDetailContainer = document.getElementById('email-detail');
+            emailListContainer.innerHTML = '';
+            emailDetailContainer.innerHTML = '';
+
+            emails.forEach((email, index) => {
+                const emailItem = document.createElement('div');
+                emailItem.className = 'email-item';
+                emailItem.innerHTML = `
+                    <div class="email-sender">${email.sender}</div>
+                    <div class="email-subject">${email.subject}</div>
+                    <div class="email-snippet">${email.snippet}</div>
+                `;
+                emailItem.addEventListener('click', () => {
+                    emailListContainer.classList.add('hidden');
+                    emailContentContainer.classList.remove('hidden');
+                    emailDetailContainer.innerHTML = `
+                        <h2>${email.subject}</h2>
+                        <p><strong>From:</strong> ${email.sender}</p>
+                        <p>${email.snippet}</p>
+                    `;
+                });
+                emailListContainer.appendChild(emailItem);
+            });
+
+            document.getElementById('back-button').addEventListener('click', () => {
+                emailListContainer.classList.remove('hidden');
+                emailContentContainer.classList.add('hidden');
+            });
+        }
+
+        fetchEmails();
+    </script>
+</body>
+
+</html>

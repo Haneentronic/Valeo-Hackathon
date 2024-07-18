@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Leader Dashboard</title>
+    <link rel="stylesheet" href="stylesupportleader.css">
+</head>
+
+<body>
+    <div id="logo-container">
+        <img src="Logo.png" alt="Logo">
+    </div>
+
+    <div id="dashboard-frame" class="container">
+        <h1>Welcome, Support Leader!</h1>
+        <div class="main-container">
+            <div class="sidebar">
+                <div class="nav-item">Inbox</div>
+                <div class="nav-item">Sent</div>
+                <div class="nav-item">Drafts</div>
+                <div class="nav-item">Spam</div>
+                <div class="nav-item">Trash</div>
+            </div>
+            <div class="content">
+                <input type="radio" id="email1-tab" name="email-tabs">
+                <input type="radio" id="email2-tab" name="email-tabs">
+                <input type="radio" id="email3-tab" name="email-tabs">
+                <div class="email-list">
+                    <label for="email1-tab" class="email-item">
+                        <div class="email-sender">John Doe</div>
+                        <div class="email-subject">Project Update</div>
+                        <div class="email-snippet">Here is a brief update on the project...</div>
+                    </label>
+                    <label for="email2-tab" class="email-item">
+                        <div class="email-sender">Jane Smith</div>
+                        <div class="email-subject">Meeting Reminder</div>
+                        <div class="email-snippet">Don't forget about our meeting tomorrow...</div>
+                    </label>
+                    <label for="email3-tab" class="email-item">
+                        <div class="email-sender">Mike Johnson</div>
+                        <div class="email-subject">New Assignment</div>
+                        <div class="email-snippet">You have been assigned a new task...</div>
+                    </label>
+                </div>
+                <div class="email-content">
+                    <label for="email1-tab" class="back-button">&larr; Back</label>
+                    <div id="email1" class="email-detail">
+                        <h2>Project Update</h2>
+                        <p><strong>From:</strong> John Doe</p>
+                        <p>Here is a brief update on the project...</p>
+                    </div>
+                    <label for="email2-tab" class="back-button">&larr; Back</label>
+                    <div id="email2" class="email-detail">
+                        <h2>Meeting Reminder</h2>
+                        <p><strong>From:</strong> Jane Smith</p>
+                        <p>Don't forget about our meeting tomorrow...</p>
+                    </div>
+                    <label for="email3-tab" class="back-button">&larr; Back</label>
+                    <div id="email3" class="email-detail">
+                        <h2>New Assignment</h2>
+                        <p><strong>From:</strong> Mike Johnson</p>
+                        <p>You have been assigned a new task...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
